@@ -13,6 +13,7 @@
 		33DAE1DB2501834900849E1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33DAE1D92501834900849E1D /* Main.storyboard */; };
 		33DAE1DD2501834D00849E1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33DAE1DC2501834D00849E1D /* Assets.xcassets */; };
 		33DAE1E02501834D00849E1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33DAE1DE2501834D00849E1D /* LaunchScreen.storyboard */; };
+		33EC96202506B3130037BE4B /* ClockFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC961F2506B3130037BE4B /* ClockFaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		33DAE1DC2501834D00849E1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33DAE1DF2501834D00849E1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33DAE1E12501834D00849E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33EC961F2506B3130037BE4B /* ClockFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				33DAE1DC2501834D00849E1D /* Assets.xcassets */,
 				33DAE1DE2501834D00849E1D /* LaunchScreen.storyboard */,
 				33DAE1E12501834D00849E1D /* Info.plist */,
+				33EC961F2506B3130037BE4B /* ClockFaceView.swift */,
 			);
 			path = KineticClock;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33EC96202506B3130037BE4B /* ClockFaceView.swift in Sources */,
 				33DAE1D82501834900849E1D /* ViewController.swift in Sources */,
 				33DAE1D42501834900849E1D /* AppDelegate.swift in Sources */,
 				33DAE1D62501834900849E1D /* SceneDelegate.swift in Sources */,
@@ -216,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -287,6 +291,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 657GC2CXLB;
 				INFOPLIST_FILE = KineticClock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 657GC2CXLB;
 				INFOPLIST_FILE = KineticClock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
