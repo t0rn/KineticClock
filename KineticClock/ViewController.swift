@@ -25,7 +25,7 @@ class ViewController: UIViewController {
                 }
             }
         }()
-    //    let clock = ClockFaceView(frame: .init(x: 100, y: 50, width: 200, height: 200))
+    
         let datePicker = UIDatePicker(frame: .init(x: 40, y: 350, width: 250, height: 200))
         
         override func loadView() {
@@ -45,9 +45,7 @@ class ViewController: UIViewController {
             stackView.backgroundColor = .red
             stackView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(stackView)
-            
-            
-            
+
             datePicker.translatesAutoresizingMaskIntoConstraints = false
             
             datePicker.date = Date()
@@ -91,7 +89,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
 
 }
 
