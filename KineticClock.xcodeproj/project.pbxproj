@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33005C29250FF7FE00EC2D1B /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33005C28250FF7FE00EC2D1B /* Matrix.swift */; };
+		33005C2B25129F7E00EC2D1B /* UIStackView+Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33005C2A25129F7E00EC2D1B /* UIStackView+Matrix.swift */; };
 		33DAE1D42501834900849E1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE1D32501834900849E1D /* AppDelegate.swift */; };
 		33DAE1D62501834900849E1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE1D52501834900849E1D /* SceneDelegate.swift */; };
 		33DAE1D82501834900849E1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE1D72501834900849E1D /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33005C28250FF7FE00EC2D1B /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		33005C2A25129F7E00EC2D1B /* UIStackView+Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Matrix.swift"; sourceTree = "<group>"; };
 		33DAE1D02501834900849E1D /* KineticClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KineticClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DAE1D32501834900849E1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33DAE1D52501834900849E1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		33DAE1D22501834900849E1D /* KineticClock */ = {
 			isa = PBXGroup;
 			children = (
+				33005C28250FF7FE00EC2D1B /* Matrix.swift */,
+				33005C2A25129F7E00EC2D1B /* UIStackView+Matrix.swift */,
 				33DAE1D32501834900849E1D /* AppDelegate.swift */,
 				33DAE1D52501834900849E1D /* SceneDelegate.swift */,
 				33DAE1D72501834900849E1D /* ViewController.swift */,
@@ -142,6 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EC96202506B3130037BE4B /* ClockFaceView.swift in Sources */,
+				33005C29250FF7FE00EC2D1B /* Matrix.swift in Sources */,
+				33005C2B25129F7E00EC2D1B /* UIStackView+Matrix.swift in Sources */,
 				33DAE1D82501834900849E1D /* ViewController.swift in Sources */,
 				33DAE1D42501834900849E1D /* AppDelegate.swift in Sources */,
 				33DAE1D62501834900849E1D /* SceneDelegate.swift in Sources */,

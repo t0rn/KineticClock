@@ -75,7 +75,7 @@ class ClockFaceView: UIView {
         let hDelta = rect.size.height * 0.2
         hourHandLayer.bounds = CGRect(x: 0,
                                       y: 0,
-                                      width: 1,
+                                      width: 2,
                                       height: (rect.size.height / 2) - hDelta)
         hourHandLayer.position = .init(x: rect.size.width / 2,
                                        y: rect.height / 2)
@@ -84,7 +84,7 @@ class ClockFaceView: UIView {
         let mDelta = rect.size.height * 0.1
         minuteHandLayer.frame = CGRect(x: rect.size.width / 2,
                                         y: mDelta,
-                                        width: 1,
+                                        width: 2,
                                         height: (rect.size.height / 2) - mDelta)
         minuteHandLayer.position = .init(x: rect.size.width / 2,
                                          y: rect.height / 2)
