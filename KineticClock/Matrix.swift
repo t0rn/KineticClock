@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Matrix<Element> {
-    let rows: Int
-    let columns: Int
+public struct Matrix<Element> {
+    public let rows: Int
+    public let columns: Int
     
     private(set) var elements: [Element]
     
@@ -34,31 +34,6 @@ struct Matrix<Element> {
     
 }
 
-extension Matrix: CustomStringConvertible {
-    public var description: String {
-        var description = ""
-
-        for i in 0..<rows {
-            let contents = (0..<columns).map { "\(self[i, $0])" }.joined(separator: "\t")
-
-            switch (i, rows) {
-            case (0, 1):
-                description += "(\t\(contents)\t)"
-            case (0, _):
-                description += "⎛\t\(contents)\t⎞"
-            case (rows - 1, _):
-                description += "⎝\t\(contents)\t⎠"
-            default:
-                description += "⎜\t\(contents)\t⎥"
-            }
-
-            description += "\n"
-        }
-
-        return description
-    }
-}
-
 extension Matrix: Collection {
     
     public subscript(_ row: Int) -> ArraySlice<Element> {
@@ -78,9 +53,6 @@ extension Matrix: Collection {
     public func index(after i: Int) -> Int {
         return i + 1
     }
-}
-
-extension Matrix {
     
     public subscript(row: Int, column: Int) -> Element {
         get {
@@ -133,5 +105,30 @@ extension Matrix {
 
     private func indexIsValidForRow(_ row: Int, column: Int) -> Bool {
         return row >= 0 && row < rows && column >= 0 && column < columns
+    }
+}
+
+extension Matrix: CustomStringConvertible {
+    public var description: String {
+        var description = ""
+
+        for i in 0..<rows {
+            let contents = (0..<columns).map { "\(self[i, $0])" }.joined(separator: "\t")
+
+            switch (i, rows) {
+            case (0, 1):
+                description += "(\t\(contents)\t)"
+            case (0, _):
+                description += "⎛\t\(contents)\t⎞"
+            case (rows - 1, _):
+                description += "⎝\t\(contents)\t⎠"
+            default:
+                description += "⎜\t\(contents)\t⎥"
+            }
+
+            description += "\n"
+        }
+
+        return description
     }
 }

@@ -9,46 +9,53 @@
 import UIKit
 
 class ClockFaceView: UIView {
-    let animationDuration = 1.0
+    enum ClockHand {
+        case minute
+        case hour
+    }
+    
     var shapeLayer: CAShapeLayer!
     var circleLayer: CALayer!
     var hourHandLayer: CALayer!
     var minuteHandLayer: CALayer!
     var circlePath: UIBezierPath!
-    
+        
     var hourAngle: CGFloat {
         CGFloat(hours) / 12.0 * 2.0 * CGFloat.pi
     }
     
-    var hours: CGFloat = 0 {
-        didSet {
-            hourHandLayer.transform = CATransform3DMakeRotation(hourAngle, 0, 0, 1)
-            let hoursHandAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-            hoursHandAnimation.duration = animationDuration
-            hoursHandAnimation.isRemovedOnCompletion = false
-            hoursHandAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-            hoursHandAnimation.fromValue = CGFloat(oldValue) / 12.0 * 2.0 * CGFloat.pi
-            hoursHandAnimation.toValue = hourAngle
-            hourHandLayer.add(hoursHandAnimation, forKey: "hoursHandAnimation")
-        }
+    private var hours: CGFloat = 0
+    
+    func set(hours: CGFloat,
+             delay: Double = 0.0,
+             duration: Double = 1) {
+        let oldValue = self.hours
+        self.hours = hours
+        
+        animate(clockHand: .hour,
+                fromValue: CGFloat(oldValue) / 12.0 * 2.0 * CGFloat.pi,
+                toValue: hourAngle,
+                delay: delay,
+                duration: duration)
     }
+    
     var minuteAngle: CGFloat {
         CGFloat(minutes) / 60 * 2.0 * CGFloat.pi
     }
+
+    private var minutes: CGFloat = 0
     
-    var minutes: CGFloat = 0 {
-        didSet {
-            minuteHandLayer.transform = CATransform3DMakeRotation(minuteAngle, 0, 0, 1)
-            // Create animation for minutes hand
-            let minutesHandAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-            minutesHandAnimation.duration = animationDuration
-            minutesHandAnimation.isRemovedOnCompletion = false
-            minutesHandAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-            minutesHandAnimation.fromValue = CGFloat(oldValue) / 60 * 2.0 * CGFloat.pi
-            minutesHandAnimation.toValue = minuteAngle
-            
-            minuteHandLayer.add(minutesHandAnimation, forKey: "minutesHandAnimation")
-        }
+    func set(minutes: CGFloat,
+             delay: Double = 0.0,
+             duration: Double = 1) {
+        let oldValue = self.minutes
+        self.minutes = minutes
+        
+        animate(clockHand: .minute,
+                fromValue: CGFloat(oldValue) / 60 * 2.0 * CGFloat.pi,
+                toValue: minuteAngle,
+                delay: delay,
+                duration: duration)
     }
     
     override public func draw(_ rect: CGRect) {
@@ -93,5 +100,56 @@ class ClockFaceView: UIView {
 
         circleLayer.addSublayer(hourHandLayer)
         circleLayer.addSublayer(minuteHandLayer)
+    }
+    
+    private func layer(by hand: ClockHand) -> CALayer {
+        switch hand {
+        case .hour:
+            return hourHandLayer
+        case .minute:
+            return minuteHandLayer
+        }
+    }
+    
+    private func animate(clockHand: ClockHand,
+                 fromValue: CGFloat,
+                 toValue: CGFloat,
+                 delay: Double,
+                 duration: Double) {
+        let handLayer = layer(by: clockHand)
+        handLayer.transform = CATransform3DMakeRotation(toValue, 0, 0, 1)
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.duration = duration
+        animation.isRemovedOnCompletion = false
+        if delay > 0 {
+            animation.beginTime = CACurrentMediaTime() + delay
+            animation.fillMode = .backwards
+        }
+        animation.autoreverses = false
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.fromValue = fromValue
+        animation.toValue = toValue
+        handLayer.add(animation, forKey: "hoursHandAnimation")
+    }
+}
+
+extension CAMediaTimingFunction {
+    //https://www.objc.io/issues/12-animations/animations-explained/#timing-functions
+    //The x-axis represents the fraction of the duration, while the y-axis is the input value of the interpolation function.
+    var points: [CGPoint] {
+        var point1 = [Float](repeating: 0.0, count: 2)
+        var point2 = [Float](repeating: 0.0, count: 2)
+        var point3 = [Float](repeating: 0.0, count: 2)
+        var point4 = [Float](repeating: 0.0, count: 2)
+        getControlPoint(at: 0, values: &point1)
+        getControlPoint(at: 1, values: &point2)
+        getControlPoint(at: 2, values: &point3)
+        getControlPoint(at: 3, values: &point4)
+        return [point1, point2, point3, point4]
+            .compactMap({ (points) -> CGPoint? in
+                guard let first = points.first,
+                    let last = points.last else {return nil}
+                return .init(x:CGFloat(first), y: CGFloat(last))
+            })
     }
 }
