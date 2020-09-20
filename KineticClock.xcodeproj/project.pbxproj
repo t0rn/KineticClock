@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		33005C29250FF7FE00EC2D1B /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33005C28250FF7FE00EC2D1B /* Matrix.swift */; };
 		33005C2B25129F7E00EC2D1B /* UIStackView+Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33005C2A25129F7E00EC2D1B /* UIStackView+Matrix.swift */; };
+		331E037F2517DC2100C6FA09 /* MatrixAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E037E2517DC2100C6FA09 /* MatrixAnimatable.swift */; };
+		331E03822517DC3400C6FA09 /* Matrix+MatrixAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E03812517DC3400C6FA09 /* Matrix+MatrixAnimatable.swift */; };
 		33DAE1D42501834900849E1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE1D32501834900849E1D /* AppDelegate.swift */; };
 		33DAE1D62501834900849E1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE1D52501834900849E1D /* SceneDelegate.swift */; };
 		33DAE1D82501834900849E1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE1D72501834900849E1D /* ViewController.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		33005C28250FF7FE00EC2D1B /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		33005C2A25129F7E00EC2D1B /* UIStackView+Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Matrix.swift"; sourceTree = "<group>"; };
+		331E037E2517DC2100C6FA09 /* MatrixAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixAnimatable.swift; sourceTree = "<group>"; };
+		331E03812517DC3400C6FA09 /* Matrix+MatrixAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Matrix+MatrixAnimatable.swift"; sourceTree = "<group>"; };
 		33DAE1D02501834900849E1D /* KineticClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KineticClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DAE1D32501834900849E1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33DAE1D52501834900849E1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,11 +71,13 @@
 				33DAE1D32501834900849E1D /* AppDelegate.swift */,
 				33DAE1D52501834900849E1D /* SceneDelegate.swift */,
 				33DAE1D72501834900849E1D /* ViewController.swift */,
+				331E03812517DC3400C6FA09 /* Matrix+MatrixAnimatable.swift */,
 				33DAE1D92501834900849E1D /* Main.storyboard */,
 				33DAE1DC2501834D00849E1D /* Assets.xcassets */,
 				33DAE1DE2501834D00849E1D /* LaunchScreen.storyboard */,
 				33DAE1E12501834D00849E1D /* Info.plist */,
 				33EC961F2506B3130037BE4B /* ClockFaceView.swift */,
+				331E037E2517DC2100C6FA09 /* MatrixAnimatable.swift */,
 			);
 			path = KineticClock;
 			sourceTree = "<group>";
@@ -103,7 +109,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Alexey Ivanov";
 				TargetAttributes = {
 					33DAE1CF2501834900849E1D = {
@@ -150,6 +156,8 @@
 				33EC96202506B3130037BE4B /* ClockFaceView.swift in Sources */,
 				33005C29250FF7FE00EC2D1B /* Matrix.swift in Sources */,
 				33005C2B25129F7E00EC2D1B /* UIStackView+Matrix.swift in Sources */,
+				331E03822517DC3400C6FA09 /* Matrix+MatrixAnimatable.swift in Sources */,
+				331E037F2517DC2100C6FA09 /* MatrixAnimatable.swift in Sources */,
 				33DAE1D82501834900849E1D /* ViewController.swift in Sources */,
 				33DAE1D42501834900849E1D /* AppDelegate.swift in Sources */,
 				33DAE1D62501834900849E1D /* SceneDelegate.swift in Sources */,
@@ -204,6 +212,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -264,6 +273,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

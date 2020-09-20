@@ -8,38 +8,36 @@
 
 import UIKit
 
-enum IterationStyle {
-    case topLeft
-    case topRight
-    case bottomRight
-    case bottomLeft
+enum AnimationDirection {
+    case left
+    case right
 }
 
-protocol ClockAnimatable {
+protocol MatrixAnimationProtocol {
     var duration: Double {get}
     var delay: Double {get}
     var hours: CGFloat {get}
     var minutes: CGFloat {get}
     var timingFunction: CAMediaTimingFunction {get}
-    var iterationStyle: IterationStyle {get}
+    var direction: AnimationDirection {get}
 }
 
-struct WaveAnimation: ClockAnimatable {
+struct WaveAnimation: MatrixAnimationProtocol {
     let duration: Double = 1.5
     let delay: Double = 1
     let hours: CGFloat
     let minutes: CGFloat
     let timingFunction: CAMediaTimingFunction
-    let iterationStyle: IterationStyle
+    let direction: AnimationDirection
 }
 
-struct ClearAnimation: ClockAnimatable {
+struct ClearAnimation: MatrixAnimationProtocol {
     let duration: Double = 1.5
     let delay: Double = 1
     let hours: CGFloat = 7
     let minutes: CGFloat = 35
     let timingFunction: CAMediaTimingFunction = .init(name: .easeInEaseOut)
-    let iterationStyle: IterationStyle
+    let direction: AnimationDirection
 }
 
 //7:35
@@ -49,12 +47,12 @@ struct ClearAnimation: ClockAnimatable {
 
 class ViewController: UIViewController {
     
-    let animations: [ClockAnimatable] = [
-        WaveAnimation(hours:1, minutes: 35, timingFunction: .init(name: .easeIn),iterationStyle: .topLeft),
-        WaveAnimation(hours:11, minutes: 15, timingFunction: .init(name: .easeInEaseOut), iterationStyle: .bottomLeft),
-        WaveAnimation(hours: 6, minutes: 0, timingFunction: .init(name: .linear), iterationStyle: .topRight),
-        WaveAnimation(hours: 9, minutes: 15, timingFunction: .init(name: .easeOut), iterationStyle: .bottomRight),
-        ClearAnimation(iterationStyle: .topLeft)
+    let animations: [MatrixAnimationProtocol] = [
+        WaveAnimation(hours:1, minutes: 35, timingFunction: .init(name: .easeIn),direction: .left),
+        WaveAnimation(hours:11, minutes: 15, timingFunction: .init(name: .easeInEaseOut), direction: .left),
+        WaveAnimation(hours: 6, minutes: 0, timingFunction: .init(name: .linear), direction: .right),
+        WaveAnimation(hours: 9, minutes: 15, timingFunction: .init(name: .easeOut), direction: .right),
+        ClearAnimation(direction: .left)
     ]
     
     
@@ -103,7 +101,7 @@ class ViewController: UIViewController {
     }
     
     @objc func buttonPressed() {
-        apply(animation: animations.randomElement()!)
+        clocks.apply(animation: animations.randomElement()!)
     }
     
     @objc func dateChanged() {
@@ -130,42 +128,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.apply(animation: ClearAnimation(iterationStyle: .topLeft))
+            self.clocks.apply(animation: ClearAnimation(direction: .left))
         }
     }
     
-    //TODO: move it to ClockView
-    func apply(animation: ClockAnimatable) {
-        let delays = (0...3).map{animation.timingFunction.points[$0].x * CGFloat(animation.delay)}
-        print(delays)
-                
-        let matrix: Matrix<ClockFaceView>
-        switch animation.iterationStyle {
-        case .topLeft:
-            matrix = clocks
-        case .bottomRight:
-            let elements: [[ClockFaceView]] = clocks.reversed().map{$0.reversed()}
-            matrix = Matrix<ClockFaceView>(elements)!
-        case .topRight:
-            let elements: [[ClockFaceView]] = clocks.reversed().map{$0.reversed().reversed()} //lol
-            matrix = Matrix<ClockFaceView>(elements)!
-        case .bottomLeft:
-            let elements: [[ClockFaceView]] = clocks.map{$0.reversed()}
-            matrix = Matrix<ClockFaceView>(elements)!
-        }
-        matrix
-            .enumerated()
-            .forEach { (rowIndex, row) in
-                row
-                    .enumerated()
-                    .forEach { (offset, element) in
-                        let delay = (animation.delay / Double((offset + 1) * (rowIndex + 1)))
-                        element.set(hours: animation.hours, delay: delay, duration: animation.duration)
-                        element.set(minutes: animation.minutes, delay: delay, duration: animation.duration)
-                }
-        }
-    }
-
     func makeViews() -> Matrix<ClockFaceView> {
         let rows = 10
         let columns = 10
@@ -186,4 +152,3 @@ class ViewController: UIViewController {
         return matrix
     }
 }
-
